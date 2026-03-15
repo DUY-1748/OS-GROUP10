@@ -7,6 +7,8 @@
     2. [Nguyễn Gia Huy] - [MSSV]
     3. [Lê Minh Khang] - [MSSV]
     4. [Trương Văn Hào]- [MSSV]
+    5.
+    6.
 
 ## Giới thiệu dự án
 
@@ -15,9 +17,20 @@ Dự án tập trung vào việc xây dựng một ứng dụng minh họa các 
 * Thuật toán FIFO (First-In, First-Out)
 * Thuật toán OPT (Optimal Page Replacement)
 
-### Cấu trúc thư mục
+### Repository Structure
+Dự án được tổ chức theo đúng yêu cầu đồ án:
 
-- **Code**: Chứa mã nguồn của ứng dụng minh họa.
-- **DOCX**: Chứa file báo cáo chi tiết về các thuật toán.
-- **PPTX**: Chứa file thuyết trình nhóm.
-- **Extra**: Chứa các tài liệu minh chứng và hình ảnh liên quan.
+```text
+OS_VME_08/
+│
+├── Code/                   # Chứa toàn bộ mã nguồn của ứng dụng
+│   ├── main.py             # File khởi chạy 
+│   ├── gui.py              # Xử lý giao diện (View & Controller), Export CSV, Stress Test
+│   ├── fifo.py             # Logic thuật toán FIFO
+│   ├── lru.py              # Logic thuật toán LRU
+│   └── opt.py              # Logic thuật toán OPT
+│
+├── DOCX/                   # Chứa báo cáo chi tiết (Word)
+├── Extra/                  # Chứa file Test I/O 
+├── PPTX/                   # Chứa slide thuyết trình (PowerPoint)
+└── ReadMe.md               # Tổng quan dự án 
