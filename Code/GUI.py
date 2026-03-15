@@ -25,7 +25,7 @@ class VMEApp:
         self.setup_ui()
 
     def setup_ui(self):
-        # --- Khung Nhập liệu ---
+        #Khung
         input_frame = tk.LabelFrame(self.root, text="Settings & Input", padx=10, pady=10)
         input_frame.pack(fill=tk.X, pady=(0, 10))
 
