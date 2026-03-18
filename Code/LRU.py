@@ -1,10 +1,9 @@
-def run_fifo(pages, num_frames):
+def run_lru(pages, num_frames):
     """
-    Hàm mô phỏng thuật toán First-In-First-Out (FIFO)
-    
+   
     input
-    - pages (list): Danh sách các trang truy cập (VD: [7, 0, 1, 2, 0, 3, 0, 4])
-    - num_frames (int): Số lượng khung trang (VD: 3)
+    - pages (list): Danh sách các trang truy cập 
+    - num_frames (int): Số lượng khung trang 
     
     output return về 2 biến này nha
     1. faults (int): Tổng số lỗi trang.
@@ -16,7 +15,6 @@ def run_fifo(pages, num_frames):
     memory = []
     faults = 0
     history = []
+
     
-
     return faults, history
-

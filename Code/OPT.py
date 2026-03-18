@@ -1,6 +1,5 @@
-def run_fifo(pages, num_frames):
+def run_opt(pages, num_frames):
     """
-    Hàm mô phỏng thuật toán First-In-First-Out (FIFO)
     
     input
     - pages (list): Danh sách các trang truy cập (VD: [7, 0, 1, 2, 0, 3, 0, 4])
@@ -16,7 +15,6 @@ def run_fifo(pages, num_frames):
     memory = []
     faults = 0
     history = []
-    
-
+   
     return faults, history
 
