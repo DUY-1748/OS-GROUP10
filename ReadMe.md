@@ -16,21 +16,3 @@ Dự án tập trung vào việc xây dựng một ứng dụng minh họa các 
 * Thuật toán LRU (Least Recently Used)
 * Thuật toán FIFO (First-In, First-Out)
 * Thuật toán OPT (Optimal Page Replacement)
-
-### Repository Structure
-Dự án được tổ chức theo đúng yêu cầu đồ án:
-
-```text
-OS_VME_08/
-│
-├── Code/                   # Chứa toàn bộ mã nguồn của ứng dụng
-│   ├── MAIN.py             # File khởi chạy 
-│   ├── GUI.py              # Xử lý giao diện (View & Controller), Export CSV, Stress Test
-│   ├── FIFO.py             # Logic thuật toán FIFO
-│   ├── LRU.py              # Logic thuật toán LRU
-│   └── OPT.py              # Logic thuật toán OPT
-│
-├── DOCX/                   # Chứa báo cáo chi tiết (Word)
-├── Extra/                  # Chứa file Test I/O 
-├── PPTX/                   # Chứa slide thuyết trình (PowerPoint)
-└── ReadMe.md               # Tổng quan dự án 
