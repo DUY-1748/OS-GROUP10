@@ -24,11 +24,11 @@ Dự án được tổ chức theo đúng yêu cầu đồ án:
 OS_VME_08/
 │
 ├── Code/                   # Chứa toàn bộ mã nguồn của ứng dụng
-│   ├── main.py             # File khởi chạy 
-│   ├── gui.py              # Xử lý giao diện (View & Controller), Export CSV, Stress Test
-│   ├── fifo.py             # Logic thuật toán FIFO
-│   ├── lru.py              # Logic thuật toán LRU
-│   └── opt.py              # Logic thuật toán OPT
+│   ├── MAIN.py             # File khởi chạy 
+│   ├── GUI.py              # Xử lý giao diện (View & Controller), Export CSV, Stress Test
+│   ├── FIFO.py             # Logic thuật toán FIFO
+│   ├── LRU.py              # Logic thuật toán LRU
+│   └── OPT.py              # Logic thuật toán OPT
 │
 ├── DOCX/                   # Chứa báo cáo chi tiết (Word)
 ├── Extra/                  # Chứa file Test I/O 
