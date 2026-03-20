@@ -1,19 +1,7 @@
 # File: Code/FIFO.py
 
 def run_fifo(pages, num_frames):
-    """
-    Hàm mô phỏng thuật toán First-In-First-Out (FIFO)
-    
-    Args:
-        pages (list): Danh sách các trang truy cập (VD: [7, 0, 1, 2, 0, 3, 0, 4])
-        num_frames (int): Số lượng khung trang (VD: 3)
-        
-    Returns:
-        tuple: (faults, history)
-            - faults (int): Tổng số lỗi trang.
-            - history (list): Lịch sử chạy, chứa các tuple (page, memory_state, is_fault)
-    """
-    
+  
     memory = []
     faults = 0
     history = []
