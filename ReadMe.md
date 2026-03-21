@@ -5,7 +5,7 @@
 - **Group Members**: 
     1. [Nguyễn Hoàng Duy] - [080206011748]
     2. [Nguyễn Gia Huy] - [079206023415]
-    3. [Lê Minh Khang] - [MSSV]
+    3. [Lê Minh Khang] - [095206004843]
     4. [Trương Văn Hào]- [MSSV]
     5.
     6.
