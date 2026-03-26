@@ -63,11 +63,12 @@ def run_opt(pages, num_frames):
     return faults, history
 
 
-    # Giả sử người dùng nhập chuỗi từ giao diện
-user_input = "7 0 1 2 0 3 0 4 2 3"
-pages = [int(x) for x in user_input.split()]
-frames = 3
+   # Test thử với dữ liệu bạn cung cấp
+input_pages = [7, 0, 1, 2, 0, 3, 0, 4]
+n_frames = 3
 
-# Chạy mô phỏng
-opt_faults, opt_history = run_opt(pages, frames)
-lru_faults, lru_history = run_lru(pages, frames)
+total_faults, run_history = run_opt(input_pages, n_frames)
+
+print(f"Tổng số lỗi trang: {total_faults}")
+for step in run_history:
+    print(step)
