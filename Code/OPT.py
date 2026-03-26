@@ -18,3 +18,56 @@ def run_opt(pages, num_frames):
    
     return faults, history
 
+    for i in range(len(pages)):
+        page = pages[i]
+        page_fault = False
+
+        # 1. Kiểm tra nếu trang đã có trong bộ nhớ (Hit)
+        if page in memory:
+            page_fault = False
+        else:
+            # 2. Nếu trang chưa có trong bộ nhớ (Miss/Fault)
+            faults += 1
+            page_fault = True
+
+            if len(memory) < num_frames:
+                # Nếu RAM còn chỗ trống, nạp trang vào
+                memory.append(page)
+            else:
+                # Nếu RAM đầy, tìm trang để thay thế (Victim Page) bằng cách nhìn tương lai
+                victim_idx = -1
+                furthest_usage = -1
+                
+                for m_idx in range(len(memory)):
+                    current_page = memory[m_idx]
+                    
+                    try:
+                        # Tìm lần xuất hiện kế tiếp của trang này (từ i + 1 trở đi)
+                        next_usage = pages.index(current_page, i + 1)
+                    except ValueError:
+                        # Nếu không bao giờ xuất hiện lại, đây là nạn nhân tốt nhất
+                        victim_idx = m_idx
+                        break
+                    
+                    # Cập nhật trang có khoảng cách đến lần dùng kế tiếp xa nhất
+                    if next_usage > furthest_usage:
+                        furthest_usage = next_usage
+                        victim_idx = m_idx
+                
+                # Thay thế trang cũ tại vị trí victim_idx bằng trang mới
+                memory[victim_idx] = page
+
+        # 3. Lưu lại lịch sử (dùng memory.copy() để tránh lỗi tham chiếu danh sách)
+        history.append((page, memory.copy(), page_fault))
+
+    return faults, history
+
+
+    # Giả sử người dùng nhập chuỗi từ giao diện
+user_input = "7 0 1 2 0 3 0 4 2 3"
+pages = [int(x) for x in user_input.split()]
+frames = 3
+
+# Chạy mô phỏng
+opt_faults, opt_history = run_opt(pages, frames)
+lru_faults, lru_history = run_lru(pages, frames)
