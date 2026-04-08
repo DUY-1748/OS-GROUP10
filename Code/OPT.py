@@ -1,74 +1,37 @@
 def run_opt(pages, num_frames):
-    """
-    
-    input
-    - pages (list): Danh sách các trang truy cập (VD: [7, 0, 1, 2, 0, 3, 0, 4])
-    - num_frames (int): Số lượng khung trang (VD: 3)
-    
-    output return về 2 biến này nha
-    1. faults (int): Tổng số lỗi trang.
-    2. history (list): Lịch sử chạy. Mỗi phần tử là 1 tuple có dạng: 
-       (trang_đang_xét, [trạng_thái_bộ_nhớ], có_bị_lỗi_trang_không)
-       VD: (7, [7], True)
-    """
-    
     memory = []
     faults = 0
     history = []
-   
-    return faults, history
-
-    for i in range(len(pages)):
-        page = pages[i]
-        page_fault = False
-
-        # 1. Kiểm tra nếu trang đã có trong bộ nhớ (Hit)
-        if page in memory:
-            page_fault = False
-        else:
-            # 2. Nếu trang chưa có trong bộ nhớ (Miss/Fault)
+    
+    for i, p in enumerate(pages):
+        is_fault = False
+        if p not in memory:
+            is_fault = True
             faults += 1
-            page_fault = True
-
             if len(memory) < num_frames:
-                # Nếu RAM còn chỗ trống, nạp trang vào
-                memory.append(page)
+                memory.append(p)
             else:
-                # Nếu RAM đầy, tìm trang để thay thế (Victim Page) bằng cách nhìn tương lai
-                victim_idx = -1
-                furthest_usage = -1
-                
-                for m_idx in range(len(memory)):
-                    current_page = memory[m_idx]
-                    
-                    try:
-                        # Tìm lần xuất hiện kế tiếp của trang này (từ i + 1 trở đi)
-                        next_usage = pages.index(current_page, i + 1)
-                    except ValueError:
-                        # Nếu không bao giờ xuất hiện lại, đây là nạn nhân tốt nhất
-                        victim_idx = m_idx
-                        break
-                    
-                    # Cập nhật trang có khoảng cách đến lần dùng kế tiếp xa nhất
-                    if next_usage > furthest_usage:
-                        furthest_usage = next_usage
-                        victim_idx = m_idx
-                
-                # Thay thế trang cũ tại vị trí victim_idx bằng trang mới
-                memory[victim_idx] = page
-
-        # 3. Lưu lại lịch sử (dùng memory.copy() để tránh lỗi tham chiếu danh sách)
-        history.append((page, memory.copy(), page_fault))
-
+                farthest = -1
+                replace_idx = -1
+                # Quét nhìn vào tương lai để tìm trang thay thế
+                for j, mem_p in enumerate(memory):
+                    if mem_p not in pages[i+1:]:
+                        replace_idx = j
+                        break # Trang này sẽ không bao giờ được dùng lại
+                    else:
+                        next_use = pages[i+1:].index(mem_p)
+                        if next_use > farthest:
+                            farthest = next_use
+                            replace_idx = j
+                memory[replace_idx] = p
+        history.append((p, list(memory), is_fault))
+        
     return faults, history
 
-
-   # Test thử với dữ liệu bạn cung cấp
-input_pages = [7, 0, 1, 2, 0, 3, 0, 4]
-n_frames = 3
-
-total_faults, run_history = run_opt(input_pages, n_frames)
-
-print(f"Tổng số lỗi trang: {total_faults}")
-for step in run_history:
-    print(step)
+# Test
+if __name__ == "__main__":
+    test_pages = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1]
+    frames = 3
+    total_faults, _ = run_opt(test_pages, frames)
+    print(f"Thuật toán OPT chạy hoàn tất!")
+    print(f"Số lỗi trang (Page Faults) với {frames} frames là: {total_faults}")
