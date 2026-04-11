@@ -1,24 +1,32 @@
 from collections import OrderedDict
 
 def run_lru(pages, num_frames):
+    if num_frames <= 0:
+        return len(pages), [
+            {"page": p, "memory": [], "fault": True} for p in pages
+        ]
+
     memory = OrderedDict()
     faults = 0
     history = []
 
     for page in pages:
-        page_fault = False
+        page_fault = page not in memory
 
-        if page in memory:
-            memory.move_to_end(page)
-        else:
+        if page_fault:
             faults += 1
-            page_fault = True
-
             if len(memory) >= num_frames:
-                memory.popitem(last=False)  # LRU
+                memory.popitem(last=False)
 
-            memory[page] = True
+        else:
+            memory.move_to_end(page)
 
-        history.append((page, list(memory.keys()), page_fault))
+        memory[page] = True
+
+        history.append({
+            "page": page,
+            "memory": list(memory.keys()),
+            "fault": page_fault
+        })
 
     return faults, history
