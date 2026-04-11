@@ -1,34 +1,24 @@
+from collections import OrderedDict
+
 def run_lru(pages, num_frames):
-    memory = []
+    memory = OrderedDict()
     faults = 0
     history = []
-    
-    # dùng dict để lưu thời điểm sử dụng gần nhất
-    last_used = {}
-    time = 0
 
     for page in pages:
-        time += 1
         page_fault = False
 
         if page in memory:
-            # cập nhật thời gian sử dụng
-            last_used[page] = time
+            memory.move_to_end(page)
         else:
             faults += 1
             page_fault = True
 
-            if len(memory) < num_frames:
-                memory.append(page)
-            else:
-                # tìm trang ít dùng gần đây nhất (LRU)
-                lru_page = min(memory, key=lambda p: last_used[p])
-                memory.remove(lru_page)
-                memory.append(page)
+            if len(memory) >= num_frames:
+                memory.popitem(last=False)  # LRU
 
-            last_used[page] = time
+            memory[page] = True
 
-        # lưu lịch sử (copy memory để tránh bị thay đổi sau)
-        history.append((page, memory.copy(), page_fault))
+        history.append((page, list(memory.keys()), page_fault))
 
     return faults, history
