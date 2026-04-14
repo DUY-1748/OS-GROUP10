@@ -8,7 +8,7 @@
     3. [Lê Minh Khang] - [095206004843]
     4. [Trương Văn Hào]- [075206016631]
   5. [Nguyễn Văn Hùng]- [064206005588]
-    6.
+    6. [Phạm Nguyễn Bình An]-[051206002496]
 
 ## Giới thiệu dự án
 
