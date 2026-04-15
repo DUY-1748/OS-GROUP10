@@ -12,7 +12,7 @@ from OPT import run_opt
 class VMEApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Virtual Memory Management Simulator - Group 08")
+        self.root.title("Virtual Memory Management Simulator - Group 10")
         self.root.geometry("1050x650") 
         self.root.configure(padx=20, pady=20)
 
