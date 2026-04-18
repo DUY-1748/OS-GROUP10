@@ -4,7 +4,7 @@
 - **Project Code**: OS_VME_08
 - **Group Members**: 
   
-    | STT | Họ và Tên | MSSV |
+| STT | Họ và Tên | MSSV |
 | :--- | :--- | :--- | :--- |
 | **1** | [Nguyễn Hoàng Duy] | [080206011748] |
 | **2** | [Nguyễn Gia Huy] | [079206023415] |
