@@ -1,0 +1,25 @@
+﻿Algorithm Run;OPT
+Total Frames;3
+Total Page Faults;9
+
+Step;Page Accessed;Frame 1;Frame 2;Frame 3;Page Fault
+1;7;7;-;-;Yes
+2;0;7;0;-;Yes
+3;1;7;0;1;Yes
+4;2;2;0;1;Yes
+5;0;2;0;1;No
+6;3;2;0;3;Yes
+7;0;2;0;3;No
+8;4;2;4;3;Yes
+9;2;2;4;3;No
+10;3;2;4;3;No
+11;0;2;0;3;Yes
+12;3;2;0;3;No
+13;2;2;0;3;No
+14;1;2;0;1;Yes
+15;2;2;0;1;No
+16;0;2;0;1;No
+17;1;2;0;1;No
+18;7;7;0;1;Yes
+19;0;7;0;1;No
+20;1;7;0;1;No

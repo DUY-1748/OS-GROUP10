@@ -103,7 +103,7 @@ class VMEApp:
         self.canvas.delete("all")
         self.history = []
         self.faults = 0
-#Phần 2 (TV6) trực quang hóa hiệu năng
+#trực quang hóa hiệu năng
     def run_stress_test(self):
         num_pages = 5000
         frames = 10
@@ -128,11 +128,10 @@ class VMEApp:
         report += f"Number of Frames: {frames}\n\n"
         report += f"1. Thuật toán FIFO:\n   - Lỗi trang (Faults): {faults_fifo}\n   - Thời gian xử lý: {time_fifo:.2f} ms\n\n"
         report += f"2. Thuật toán LRU:\n   - Lỗi trang (Faults): {faults_lru}\n   - Thời gian xử lý: {time_lru:.2f} ms\n\n"
-        report += f"3. Thuật toán OPT (Tối ưu nhất):\n   - Lỗi trang (Faults): {faults_opt}\n   - Thời gian xử lý: {time_opt:.2f} ms\n\n"
-        report += "Kết luận:\n- OPT luôn cho số lỗi trang ít nhất, nhưng thời gian tính toán có thể lâu nhất (do phải duyệt tương lai).\n- FIFO và LRU chạy cực nhanh, rất phù hợp với thực tế phần cứng."
+        report += f"3. Thuật toán OPT:\n   - Lỗi trang (Faults): {faults_opt}\n   - Thời gian xử lý: {time_opt:.2f} ms\n\n"
         
         messagebox.showinfo("Performance Test Result - Proof", report)
-#Phần 3 (TV2) xử lý file
+# xử lý file
     def load_csv(self):
         file_path = filedialog.askopenfilename(filetypes=[("CSV Files", "*.csv")])
         if not file_path:
