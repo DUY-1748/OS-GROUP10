@@ -1,47 +1,29 @@
-# File: Code/FIFO.py
-
 def run_fifo(pages, num_frames):
-  
-    memory = []
+    # Khởi tạo mảng tĩnh đại diện cho các Frame (Ví dụ: [None, None, None])
+    memory = [None] * num_frames
     faults = 0
     history = []
     
-    for page in pages:
+    # Con trỏ đánh dấu vị trí Frame cũ nhất sẽ bị thay thế
+    pointer = 0 
+    
+    for p in pages:
         is_fault = False
         
-        # Nếu trang không có trong bộ nhớ -> Lỗi trang (Page Fault)
-        if page not in memory:
+        # Nếu trang p chưa có trong bộ nhớ
+        if p not in memory:
             is_fault = True
             faults += 1
             
-            # Nếu bộ nhớ đã đầy các khung trang
-            if len(memory) == num_frames:
-                # Xóa phần tử đầu tiên (trang vào sớm nhất - First In)
-                memory.pop(0)
+            # Ghi đè trang mới vào vị trí con trỏ hiện tại
+            memory[pointer] = p
             
-            # Thêm trang mới vào cuối bộ nhớ
-            memory.append(page)
+            # Nhích con trỏ sang Frame tiếp theo. 
+            # Dùng phép chia lấy dư (%) để con trỏ vòng lại 0 khi vượt quá num_frames
+            pointer = (pointer + 1) % num_frames 
             
-        # Lưu lại bản sao của trạng thái bộ nhớ hiện tại để GUI vẽ giao diện
-        # Chú ý: Dùng list(memory) để không bị tham chiếu vùng nhớ
-        history.append((page, list(memory), is_fault))
+        # Lọc bỏ giá trị None để tương thích với hàm draw_simulation trong GUI
+        current_state = [x for x in memory if x is not None]
+        history.append((p, current_state, is_fault))
         
     return faults, history
-
-# ==========================================
-# Khối code này giúp bạn tự test độc lập file này trước khi ghép vào GUI
-if __name__ == "__main__":
-    # Test case giống ví dụ trong giáo trình Hệ điều hành
-    test_pages = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1]
-    test_frames = 3
-    
-    total_faults, run_history = run_fifo(test_pages, test_frames)
-    
-    print(f"--- KẾT QUẢ TEST THUẬT TOÁN FIFO ---")
-    print(f"Tổng số lỗi trang (Page Faults): {total_faults}\n")
-    print(f"{'Trang':<10} | {'Trạng thái Frame':<20} | {'Kết quả'}")
-    print("-" * 50)
-    for step in run_history:
-        current_page, mem_state, is_fault = step
-        status = "Page Fault" if is_fault else "Hit"
-        print(f"{current_page:<10} | {str(mem_state):<20} | {status}")
