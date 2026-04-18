@@ -2,16 +2,17 @@
 
 - **Project Name**: Build an APP for demonstration Virtual Memory management algorithm: LRU, FIFO and OPT
 - **Project Code**: OS_VME_08
-- **Group Members**: 
-  
-    | STT | Họ và Tên | MSSV |
-| :--- | :--- | :--- | :--- |
-| **1** | [Nguyễn Hoàng Duy] | [080206011748] |
-| **2** | [Nguyễn Gia Huy] | [079206023415] |
-| **3** | [Lê Minh Khang] | [095206004843] | 
-| **4** | [Trương Văn Hào] | [075206016631] | 
-| **5** | [Nguyễn Văn Hùng] | [064206005588] |  
-| **6** | [Phạm Nguyễn Bình An] | [051206002496] |  
+## Danh sách thành viên
+
+
+| STT | Họ và Tên | MSSV | 
+| :--- | :--- | :--- | 
+| **1** | Nguyễn Hoàng Duy | 080206011748 |
+| **2** | Nguyễn Gia Huy | 079206023415 |
+| **3** | Lê Minh Khang | 095206004843 | 
+| **4** | Trương Văn Hào | 075206016631 | 
+| **5** | Nguyễn Văn Hùng | 051206002496 |  
+| **6** | Phạm Nguyễn Bình An | 064206005588 |   
 
 ## Giới thiệu dự án
 
