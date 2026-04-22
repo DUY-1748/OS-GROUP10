@@ -11,7 +11,7 @@
 | **2** | Nguyễn Gia Huy | 079206023415 |
 | **3** | Lê Minh Khang | 095206004843 | 
 | **4** | Trương Văn Hào | 075206016631 | 
-| **5** | Nguyễn Văn Hùng | 051206002496 |  
+| **5** | Nguyễn Văn Hùng | 064206005588 |  
 | **6** | Phạm Nguyễn Bình An | 064206005588 |   
 
 ## Giới thiệu dự án
